@@ -6,6 +6,9 @@
 02-ASPNET-Core/bin/
 02-ASPNET-Core/obj/
 
+# ASP.NET Core lib (template defaults, using CDN instead)
+02-ASPNET-Core/wwwroot/lib/
+
 # OS
 Thumbs.db
 .DS_Store
