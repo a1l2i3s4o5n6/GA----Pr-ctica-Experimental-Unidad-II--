@@ -1,22 +1,15 @@
-// Módulo de autenticación y gestión de productos - Actualizado por Xavier
+
 <?php
-
 require_once __DIR__ . '/../vendor/autoload.php';
-
 use App\Auth;
 use App\Security;
 use App\Task;
 use App\Database;
-
 session_start();
-
 Security::sendSecurityHeaders();
-
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_SERVER['REQUEST_METHOD'];
-
 $task = new Task();
-
 try {
     switch (true) {
         // === AUTH ROUTES ===
@@ -29,7 +22,6 @@ try {
             echo $content;
             include __DIR__ . '/../templates/layout/footer.php';
             break;
-
         case $uri === '/login' && $method === 'POST':
             if (!Security::validateCsrfToken($_POST['csrf_token'] ?? '')) {
                 $error = 'Error de validación CSRF.';
@@ -202,7 +194,6 @@ try {
             echo $content;
             include __DIR__ . '/../templates/layout/footer.php';
             break;
-
         case preg_match('#^/tasks/(\d+)$#', $uri, $m) === 1 && $method === 'GET':
             Auth::requireLogin();
             $taskData = $task->getById((int)$m[1]);
