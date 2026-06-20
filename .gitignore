@@ -1,0 +1,11 @@
+# PHP
+01-PHP/vendor/
+01-PHP/composer.lock
+
+# ASP.NET Core
+02-ASPNET-Core/bin/
+02-ASPNET-Core/obj/
+
+# OS
+Thumbs.db
+.DS_Store
