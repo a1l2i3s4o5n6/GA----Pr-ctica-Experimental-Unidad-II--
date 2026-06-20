@@ -30,7 +30,7 @@
                 </form>
 
                 <p class="text-center mt-3">
-                    ¿Ya tienes cuenta? <a href="/login">Inicia sesión</a>
+                    ¿Ya tienes cuenta? <a href="/login">Iniciar sesión</a>
                 </p>
             </div>
         </div>

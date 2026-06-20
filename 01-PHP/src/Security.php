@@ -8,7 +8,6 @@ class Security
     {
         return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
     }
-
     public static function generateCsrfToken(): string
     {
         if (empty($_SESSION['csrf_token'])) {
@@ -16,7 +15,6 @@ class Security
         }
         return $_SESSION['csrf_token'];
     }
-
     public static function validateCsrfToken(string $token): bool
     {
         if (empty($_SESSION['csrf_token'])) {
@@ -24,7 +22,6 @@ class Security
         }
         return hash_equals($_SESSION['csrf_token'], $token);
     }
-
     public static function csrfField(): string
     {
         $token = self::generateCsrfToken();

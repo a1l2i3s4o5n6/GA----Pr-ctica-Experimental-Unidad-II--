@@ -12,7 +12,6 @@ class Task
     {
         $this->db = Database::getInstance()->getConnection();
     }
-
     public function create(int $userId, string $title, string $description, ?string $dueDate): array
     {
         $stmt = $this->db->prepare(
@@ -29,7 +28,6 @@ class Task
 
         return ['success' => true, 'id' => $this->db->lastInsertId()];
     }
-
     public function getAll(int $userId): array
     {
         $stmt = $this->db->prepare(

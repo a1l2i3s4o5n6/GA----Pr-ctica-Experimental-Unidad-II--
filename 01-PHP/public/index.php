@@ -113,7 +113,6 @@ try {
             header('Location: /login');
             exit;
 
-        // === PROTECTED ROUTES ===
         case $uri === '/' || $uri === '/dashboard':
             Auth::requireLogin();
             $db = Database::getInstance()->getConnection();
@@ -138,7 +137,6 @@ try {
             include __DIR__ . '/../templates/layout/footer.php';
             break;
 
-        // === TASKS CRUD ===
         case $uri === '/tasks' && $method === 'GET':
             Auth::requireLogin();
             $tasks = $task->getAll($_SESSION['user_id']);

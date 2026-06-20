@@ -3,7 +3,6 @@
         <div class="card shadow">
             <div class="card-body p-4">
                 <h2 class="text-center mb-4">Iniciar Sesión</h2>
-
                 <?php if (!empty($error)): ?>
                     <div class="alert alert-danger"><?= App\Security::escape($error) ?></div>
                 <?php endif; ?>
@@ -20,7 +19,6 @@
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Ingresar</button>
                 </form>
-
                 <p class="text-center mt-3">
                     ¿No tienes cuenta? <a href="/register">Regístrate aquí</a>
                 </p>
