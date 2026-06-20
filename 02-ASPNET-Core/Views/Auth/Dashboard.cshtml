@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <h1 class="card-title">Bienvenido, @ViewBag.Username</h1>
+                <p class="card-text">Panel de control de la aplicación de gestión de tareas.</p>
+                <hr>
+                <div class="row mt-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="card text-bg-primary">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">@ViewBag.TotalTasks</h5>
+                                <p class="card-text">Total Tareas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card text-bg-warning">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">@ViewBag.PendingTasks</h5>
+                                <p class="card-text">Pendientes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card text-bg-success">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">@ViewBag.CompletedTasks</h5>
+                                <p class="card-text">Completadas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="/Tasks" class="btn btn-primary">Ver Mis Tareas</a>
+                    <a href="/Tasks/Create" class="btn btn-success">Nueva Tarea</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+@model TaskViewModel
+@{
+    ViewData["Title"] = "Editar Tarea";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <h1 class="card-title mb-4">Editar Tarea</h1>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" required />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Status" class="form-label">Estado</label>
+                        <select asp-for="Status" class="form-select">
+                            <option value="pending">Pendiente</option>
+                            <option value="in_progress">En Progreso</option>
+                            <option value="completed">Completada</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="DueDate" class="form-label">Fecha Límite</label>
+                        <input asp-for="DueDate" class="form-control" type="date" />
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        <a href="/Tasks" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

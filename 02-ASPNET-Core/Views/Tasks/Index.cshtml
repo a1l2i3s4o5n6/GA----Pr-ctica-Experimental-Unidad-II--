@@ -1,0 +1,61 @@
+@model List<WebApp.Models.TaskItem>
+@{
+    ViewData["Title"] = "Mis Tareas";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Mis Tareas</h1>
+    <a href="/Tasks/Create" class="btn btn-success">+ Nueva Tarea</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No tienes tareas registradas.
+        <a href="/Tasks/Create" class="alert-link">Crea tu primera tarea</a>.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Título</th>
+                    <th>Estado</th>
+                    <th>Fecha Límite</th>
+                    <th>Creada</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model)
+                {
+                    <tr>
+                        <td>@task.Title</td>
+                        <td>
+                            <span class="badge bg-@(task.Status == "completed" ? "success" : task.Status == "in_progress" ? "warning" : "secondary")">
+                                @(task.Status switch
+                                {
+                                    "pending" => "Pendiente",
+                                    "in_progress" => "En Progreso",
+                                    "completed" => "Completada",
+                                    _ => task.Status
+                                })
+                            </span>
+                        </td>
+                        <td>@(task.DueDate?.ToString("yyyy-MM-dd") ?? "—")</td>
+                        <td>@task.CreatedAt.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a href="/Tasks/Edit/@task.Id" class="btn btn-sm btn-warning">Editar</a>
+                            <form method="post" action="/Tasks/Delete/@task.Id" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar esta tarea?')">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
