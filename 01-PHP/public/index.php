@@ -1,3 +1,4 @@
+// Módulo de autenticación y gestión de productos - Actualizado por Xavier
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
